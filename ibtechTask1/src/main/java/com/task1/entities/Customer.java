@@ -1,4 +1,6 @@
 package com.task1.entities;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,19 +15,23 @@ public class Customer {
 	@Column(name="customerSurname") 
 	private String customerSurname;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "address_id", referencedColumnName = "AddressId")
-	private Address address;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "phone_id", referencedColumnName = "phoneId")
-	private Phone phone;
+	@OneToMany(mappedBy="customer",cascade = CascadeType.ALL)
+	private List<Address> address;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "account_id", referencedColumnName = "accountId")
-	private Account account;
+	@OneToMany(mappedBy="customer",cascade = CascadeType.ALL)
+	private List<Phone> phone;
+	
+	@OneToMany(mappedBy="customer",cascade = CascadeType.ALL)
+	private List<Account> account;
 	
 	
+	
+	public Customer(long customerId, String customerName, String customerSurname) {
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.customerSurname = customerSurname;
+	}
 	public Customer( String customerName, String customerSurname) {
 		this.customerName = customerName;
 		this.customerSurname = customerSurname;
@@ -34,7 +40,6 @@ public class Customer {
 
 		
 	}
-	
 	public long getCustomerId() {
 		return customerId;
 	}
@@ -53,24 +58,28 @@ public class Customer {
 	public void setCustomerSurname(String customerSurname) {
 		this.customerSurname = customerSurname;
 	}
-	public Address getAddress() {
-		return address;
-	}
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-	public Phone getPhone() {
+	
+	
+	public List<Phone> getPhone() {
 		return phone;
 	}
-	public void setPhone(Phone phone) {
+	public void setPhone(List<Phone> phone) {
 		this.phone = phone;
 	}
-	public Account getAccount() {
+	public List<Address> getAddress() {
+		return address;
+	}
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+	public List<Account> getAccount() {
 		return account;
 	}
-	public void setAccount(Account account) {
+	public void setAccount(List<Account> account) {
 		this.account = account;
 	}
+	
+	
 	
 	
 	

@@ -1,5 +1,7 @@
 package com.task1.test;
 
+import java.util.ArrayList;
+
 import com.task1.entities.Account;
 import com.task1.entities.Address;
 import com.task1.entities.Customer;
@@ -10,19 +12,35 @@ import com.task1.relations.CustomerRepository;
 public class Test {
 public static void main(String[] args) {
 		
-		Customer customer = new Customer("Fatih","Özel");
+		Customer customer = new Customer("Ozan","Özel");
 		
 		Address address=new Address("Türkiye","İzmir","Buca","3500");
 		
-		Phone phone=new Phone("+50","5535098913");
-		
-		Account account= new Account("Beşiktaşım","Karakartal");
+		Phone phone=new Phone("+90","5535098914");
 	
 		
 		
-		customer.setAddress(address);
-		customer.setPhone(phone);
-		customer.setAccount(account);
+		Account account= new Account("BeşiktaşımOLey","Karakartal");
+		
+		
+		
+	
+		
+		customer.setAddress(new ArrayList<Address>());
+		customer.getAddress().add(address);
+		
+		customer.setPhone(new ArrayList<Phone>());
+		customer.getPhone().add(phone);
+		
+		
+		customer.setAccount(new ArrayList<Account>());
+		customer.getAccount().add(account);
+		
+		
+		account.setCustomer(customer);
+		phone.setCustomer(customer);
+
+		address.setCustomer(customer);
 		
 		CustomerRepository customerRepository=new CustomerRepository();
 		

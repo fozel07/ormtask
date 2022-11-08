@@ -1,13 +1,15 @@
 package com.task1.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
-
 public class Account {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name="accountId") 
@@ -19,7 +21,8 @@ public class Account {
 	@Column(name="accountPassword") 
 	private String accountPassword;
 	
-	@OneToOne(mappedBy = "account")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="customer_ıd")
 	private Customer customer;
 
 	public Account(String accountName, String accountPassword) {

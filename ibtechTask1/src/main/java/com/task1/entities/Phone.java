@@ -1,10 +1,5 @@
 package com.task1.entities;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Phone {
@@ -18,7 +13,8 @@ public class Phone {
 	@Column(name="phoneNumber") 
 	private String phoneNumber;
 	
-	@OneToOne(mappedBy = "phone")
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="customer_ıd")
 	private Customer customer;
 
 	public Phone( String countryNumber, String phoneNumber) {

@@ -20,7 +20,8 @@ public class Address {
 	@Column(name="AdressCode") 
 	private String AdressCode;
 	
-	@OneToOne(mappedBy = "address" )
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="customer_ıd")
 	private Customer customer;
 
 	public Address(int addressId, String country, String city, String street, String adressCode) {
