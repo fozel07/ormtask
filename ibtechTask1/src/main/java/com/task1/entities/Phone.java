@@ -5,7 +5,7 @@ import javax.persistence.*;
 public class Phone {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name="phoneId") 
-	private int phoneId;
+	private long phoneId;
 	
 	@Column(name="countryNumber") 
 	private String countryNumber;
@@ -23,15 +23,33 @@ public class Phone {
 	}
 	public Phone( ) {
 	}
+	public Phone( String countryNumber, String phoneNumber, Customer customer) {
+		this.countryNumber = countryNumber;
+		this.phoneNumber = phoneNumber;
+		this.customer = customer;
+	}
 
-	public int getPhoneId() {
+	
+
+	public Phone(long phoneId, String countryNumber, String phoneNumber, Customer customer) {
+		super();
+		this.phoneId = phoneId;
+		this.countryNumber = countryNumber;
+		this.phoneNumber = phoneNumber;
+		this.customer = customer;
+	}
+	public Phone(long phoneId, String countryNumber, String phoneNumber) {
+		super();
+		this.phoneId = phoneId;
+		this.countryNumber = countryNumber;
+		this.phoneNumber = phoneNumber;
+	}
+	public long getPhoneId() {
 		return phoneId;
 	}
-
-	public void setPhoneId(int phoneId) {
+	public void setPhoneId(long phoneId) {
 		this.phoneId = phoneId;
 	}
-
 	public String getCountryNumber() {
 		return countryNumber;
 	}

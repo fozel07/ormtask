@@ -13,30 +13,30 @@ import javax.persistence.OneToOne;
 public class Account {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name="accountId") 
-	private int accountId;
+	private long accountId;
 	
 	@Column(name="accountName") 
 	private String accountName;
 	
-	@Column(name="accountPassword") 
-	private String accountPassword;
+	@Column(name="balance") 
+	private long balance;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_ıd")
 	private Customer customer;
 
-	public Account(String accountName, String accountPassword) {
+	public Account(String accountName, long balance) {
 		this.accountName = accountName;
-		this.accountPassword = accountPassword;
+		this.balance = balance;
 	}
 	public Account() {
 	
 		
 	}
-	public int getAccountId() {
+	public long getAccountId() {
 		return accountId;
 	}
-	public void setAccountId(int accountId) {
+	public void setAccountId(long accountId) {
 		this.accountId = accountId;
 	}
 	public String getAccountName() {
@@ -45,11 +45,11 @@ public class Account {
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
 	}
-	public String getAccountPassword() {
-		return accountPassword;
+	public long getBalance() {
+		return balance;
 	}
-	public void setAccountPassword(String accountPassword) {
-		this.accountPassword = accountPassword;
+	public void setBalance(long balance) {
+		this.balance = balance;
 	}
 	public Customer getCustomer() {
 		return customer;
@@ -57,6 +57,8 @@ public class Account {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	
 	
 	
 	

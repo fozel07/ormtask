@@ -6,7 +6,7 @@ public class Address {
 	
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)@Column(name="AddressId") 
-	private int AddressId;
+	private long AddressId;
 	
 	@Column(name="Country") 
 	private String Country;
@@ -17,33 +17,33 @@ public class Address {
 	@Column(name="Street") 
 	private String Street;
 	
-	@Column(name="AdressCode") 
-	private String AdressCode;
+	@Column(name="AddressCode") 
+	private String AddressCode;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="customer_ıd")
 	private Customer customer;
 
-	public Address(int addressId, String country, String city, String street, String adressCode) {
+	public Address(long addressId, String country, String city, String street, String addressCode) {
 		AddressId = addressId;
 		Country = country;
 		City = city;
 		Street = street;
-		AdressCode = adressCode;
+		AddressCode = addressCode;
 	}
 	public Address( String country, String city, String street, String adressCode) {
 		Country = country;
 		City = city;
 		Street = street;
-		AdressCode = adressCode;
+		AddressCode = adressCode;
 	}
 	public Address( ) {
 
 	}
-	public int getAddressId() {
+	public long getAddressId() {
 		return AddressId;
 	}
-	public void setAddressId(int addressId) {
+	public void setAddressId(long addressId) {
 		AddressId = addressId;
 	}
 	public String getCountry() {
@@ -65,10 +65,10 @@ public class Address {
 		Street = street;
 	}
 	public String getAdressCode() {
-		return AdressCode;
+		return AddressCode;
 	}
 	public void setAdressCode(String adressCode) {
-		AdressCode = adressCode;
+		AddressCode = adressCode;
 	}
 	public Customer getCustomer() {
 		return customer;

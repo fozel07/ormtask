@@ -36,10 +36,14 @@ public class Customer {
 		this.customerName = customerName;
 		this.customerSurname = customerSurname;
 	}
+	public Customer(long customerId) {
+		this.customerId = customerId;
+	}
 	public Customer() {
 
 		
 	}
+	
 	public long getCustomerId() {
 		return customerId;
 	}

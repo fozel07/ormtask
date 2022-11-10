@@ -8,56 +8,28 @@ import com.task1.entities.Customer;
 public class CustomerRepository extends BaseRepository<Customer>{
 	
 	
-	
-	public void insert(Customer customer) {
-		EntityManager manager=newManager();
-		manager=newManager();
-	
-		manager.getTransaction().begin();
-		
-		
-		manager.persist(customer);
-		
-		
-		manager.getTransaction().commit();
-		
-		manager.close();	
+	public CustomerRepository() {
+		super(Customer.class);
 	}
 	
-	public Customer find(long customerId) {
-		EntityManager manager=newManager();
-		Customer customer=manager.find(Customer.class, customerId);
-		
-		return customer;
-	}
-	
-	public void delete(long customerId) {
-		EntityManager manager=newManager();
-		manager.getTransaction().begin();
-		Customer customer=manager.find(Customer.class, customerId);
-		
-		manager.remove(customer);
-		
-		manager.getTransaction().commit();
-		
-	}
-	
-	public void update(long customerId, String customerName, String customerSurname) {
+	public void update(Customer customer) {
 		EntityManager manager=newManager();
 		manager.getTransaction().begin();
 		
-		Customer customer=manager.find(Customer.class, customerId);
+		Customer customerUpdate=manager.find(Customer.class, customer.getCustomerId());
 		
-		customer.setCustomerName(customerName);
-		customer.setCustomerSurname(customerSurname);
+		customerUpdate.setCustomerName(customer.getCustomerName());
+		customerUpdate.setCustomerSurname(customer.getCustomerSurname());
 		
-		manager.merge(customer);
+		manager.merge(customerUpdate);
 		
 		manager.getTransaction().commit();
 		
 		manager.close();
 			
 	}
+	
+	
 	
 	
 	
